@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Register Page</title>
+<script type="text/javascript">
+function valid() 
+{
+	var u=document.getElementById('uname').value;
+	var p=document.getElementById('pass').value;
+	var q=document.getElementById('cpass').value;
+	var ph=document.getElementById('mobno').value;
+	var c=document.getElementById('ad').value;
+	if(u.length==0 || p.length==0)
+	{
+		alert("username and password souldn't be blank");
+		return false;
+	}
+	if (p.length<8) 
+	{
+		alert("password should be atleast of 8 digits");
+		return false;
+	}
+	if(ph.length!=10)
+	{
+		alert("phone number legth should be ten");
+	return false;
+	}
+	if(ad.length==0)
+	{
+	alert("you have to fill ");
+	return false;
+	}
+	if(q!=p){
+		alert("password not matched");
+		return false;
+	}
+	return true;
+}
+</script>
+</head>
+<body>
+	<center>
+		<form action="register">
+			Enter UserName<input type="text" name="uname" id="uname"><br>
+			Enter FullName<input type="text" name="fname" id="fname"><br>
+			Enter Password<input type="password" name="pass" id="pass"><br>
+			Enter ConfirmPassword<input type="password" name="cpass"><br>
+			Enter Address<input type="text" name="ad"><br>
+			Enter MobileNumber<input type="text" name="mobno"><br>
+			Enter Gender<input type="text" name="gen"><br>
+			Enter Email<input type="email" name="email"><br>
+			Id card Number<input type="text" name="cnum"><br>
+			Registration Type<input type="text" name="rgistype"><br>
+			Number of Ticket<input type="text" name="numoftic"><br>
+			<input type="submit" value="Register">
+		</form>
+	</center>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login</title>
+<script type="text/javascript">
+function valid() 
+{
+	var u=document.getElementById('uname').value;
+	var p=document.getElementById('pass').value;
+	if(u.length==0 || p.length==0){
+	alert("username and password souldn't be blank");
+	return false;
+	}
+	if (p.length<8) 
+	{
+		alert("password should be atleast of 8 digits");
+		return false;
+	}
+	return true;
+}
+</script>
+</head>
+<body>
+	<center>
+		<form action="login">
+			Enter UserName<input type="text" name="uname"><br>
+			Enter Password<input type="password" name="pass"><br>
+			<input type="submit" value="Login" onclick="return valid();">
+		</form>
+	</center>
+</body>
+</html>
