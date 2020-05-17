@@ -1,21 +1,419 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Home Page</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>HomePage</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+		* {
+			padding: 0%;
+			margin: 0%;
+		}
+
+		body {
+			background-image: url("home.jpg");
+		}
+
+		#menuToggle {
+			margin-left: 15px;
+			display: block;
+			position: relative;
+			top: 20px;
+			z-index: 1;
+			-webkit-user-select: none;
+			user-select: none;
+		}
+
+		#menuToggle a {
+			text-align: center;
+			text-decoration: none;
+			color: teal;
+			transition: color 0.3s ease;
+		}
+
+		#menuToggle a:hover {
+			color: rgba(67, 255, 255, 0.788);
+		}
+
+		#menuToggle input {
+			display: block;
+			width: 40px;
+			height: 32px;
+			position: absolute;
+			top: -7px;
+			left: -5px;
+			cursor: pointer;
+			opacity: 0;
+			z-index: 2;
+			-webkit-touch-callout: none;
+		}
+
+		#menuToggle span {
+			display: block;
+			width: 33px;
+			height: 4px;
+			margin-bottom: 5px;
+			position: relative;
+			background: rgba(67, 255, 255, 0.788);
+			border-radius: 3px;
+			z-index: 1;
+			transform-origin: 4px 0px;
+			transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), opacity 0.55s ease;
+		}
+
+		#menuToggle span:first-child {
+			transform-origin: 0% 0%;
+		}
+
+		#menuToggle span:nth-last-child(2) {
+			transform-origin: 0% 100%;
+		}
+
+		#menuToggle input:checked~span {
+			opacity: 1;
+			transform: rotate(45deg) translate(-2px, -1px);
+			background: rgba(67, 255, 255, 0.788);
+		}
+
+		#menuToggle input:checked~span:nth-last-child(3) {
+			opacity: 0;
+			transform: rotate(0deg) scale(0.2, 0.2);
+		}
+
+		#menuToggle input:checked~span:nth-last-child(2) {
+			transform: rotate(-45deg) translate(0, -1px);
+		}
+
+		#menu {
+			position: absolute;
+			width: 60%;
+			height: 300px;
+			margin: -100px 0 0 -50px;
+			padding: 10px;
+			padding-top: 90px;
+			background: rgb(0, 0, 0);
+			list-style-type: none;
+			-webkit-font-smoothing: antialiased;
+			transform-origin: 0% 0%;
+			transform: translate(-100%, 0);
+			transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+		}
+
+		#menu li {
+			padding: 10px 0;
+			font-size: 25px;
+		}
+
+		#menuToggle input:checked~ul {
+			transform: none;
+		}
+
+		hr {
+			height: 0.5px;
+			background-color: white;
+			border: none;
+			width: 60%;
+			margin: auto;
+		}
+
+		i {
+			color: teal;
+		}
+
+		.search_bar {
+			margin-top: 40px;
+			height: 35px;
+			width: 85%;
+			border: none;
+			border-radius: 5px;
+		}
+
+		input::placeholder {
+			padding-left: 1%;
+		}
+
+		h1 {
+			margin-top: 15px;
+			font-size: 50px;
+			color: white;
+			font-family: cursive;
+			text-align: center;
+		}
+
+		h2 {
+			color: white;
+			font-size: 40px;
+			font-family: 'Courier New', Courier, monospace;
+			margin-left: 20px;
+		}
+
+		.event {
+			text-align: center;
+		}
+
+		ul li {
+			list-style: none;
+		}
+
+		a img {
+			background-color: white;
+			height: 200px;
+			width: 90%;
+		}
+
+		.grid {
+			width: 100%;
+			display: grid;
+			grid-template-columns: auto auto auto auto;
+		}
+
+		.user_profile {
+			margin-right: 4%;
+			text-align: right;
+		}
+
+		@media screen and (max-width:1024px) {
+			.grid {
+				grid-template-columns: auto auto auto;
+			}
+		}
+
+		@media screen and (max-width:700px) {
+			.grid {
+				grid-template-columns: auto auto;
+			}
+		}
+
+		@media screen and (max-width:450px) {
+			.grid {
+				grid-template-columns: auto;
+			}
+
+			a img {
+				background-color: white;
+				height: 200px;
+				width: 70%;
+			}
+		}
+	</style>
 </head>
+
 <body>
-	<nav>
+	<nav role="navigation">
+		<div id="menuToggle">
+			<input type="checkbox" />
+			<span></span>
+			<span></span>
+			<span></span>
+
+			<ul id="menu">
+				<a href="home.html">
+					<li>Home</li>
+				</a>
+				<hr>
+				<a href="vegetable.html">
+					<li>Events</li>
+				</a>
+				<hr>
+				<a href="about.html">
+					<li>About</li>
+				</a>
+				<hr>
+				<a href="login.html">
+					<li>User Login</li>
+				</a>
+				<hr>
+				<a href="register.html">
+					<li>User Register</li>
+				</a>
+				<hr>
+				<a href="login.html">
+					<li>Admin Login</li>
+				</a>
+			</ul>
+		</div>
+	</nav>
+	<nav class="user_profile">
 		<a href="userprofile.jsp">Profile</a>
 	</nav>
-	<h1>Events</h1>
-	<table>
-		<tr>
-			<th>Event1</th><br>
-		</tr>
-		<tr>
-			<td>Event 1</td>
-		</tr>
-	</table>
+	<div align="center">
+		<form action="xyz.php">
+			<input class="search_bar" placeholder="Search Events" onkeyup="myFunction()" type="search" id="gsearch"
+				name="gsearch">
+		</form>
+	</div>
+	<div>
+		<h1>EVENTS</h1>
+		<h2>Hackathons</h2>
+		<ul id="event_list" class="event grid">
+			<li>
+				<a href="#"><img src="background.jpg" alt="image">
+					<h6>sfdsd1</h6>
+				</a>
+			</li>
+			<li>
+				<a href="#"><img src="background.jpg" alt="image">
+					<h6>sfdsd2</h6>
+				</a>
+			</li>
+			<li>
+				<a href="#"><img src="background.jpg" alt="image">
+					<h6>sfdsd3</h6>
+				</a>
+			</li>
+			<li>
+				<a href="#"><img src="background.jpg" alt="image">
+					<h6>sfdsd</h6>
+				</a>
+			</li>
+			<li>
+				<a href="#"><img src="#" alt="image"></a>
+			</li>
+			<li>
+				<a href="#"><img src="#" alt="image"></a>
+			</li>
+			<li>
+				<a href="#"><img src="#" alt="image"></a>
+			</li>
+			<li>
+				<a href="#"><img src="#" alt="image"></a>
+			</li>
+		</ul>
+		<h2>Coding Competitions</h2>
+		<ul id="event_list1" class="event grid">
+			<li>
+				<a href="#"><img src="#" alt="image"></a>
+			</li>
+			<li>
+				<a href="#"><img src="#" alt="image"></a>
+			</li>
+			<li>
+				<a href="#"><img src="#" alt="image"></a>
+			</li>
+			<li>
+				<a href="#"><img src="#" alt="image"></a>
+			</li>
+			<li>
+				<a href="#"><img src="#" alt="image"></a>
+			</li>
+			<li>
+				<a href="#"><img src="#" alt="image"></a>
+			</li>
+			<li>
+				<a href="#"><img src="#" alt="image"></a>
+			</li>
+			<li>
+				<a href="#"><img src="#" alt="image"></a>
+			</li>
+		</ul>
+		<h2>Webinars</h2>
+		<ul id="event_list2" class="event grid">
+			<li>
+				<a href="#"><img src="#" alt="image"></a>
+			</li>
+			<li>
+				<a href="#"><img src="#" alt="image"></a>
+			</li>
+			<li>
+				<a href="#"><img src="#" alt="image"></a>
+			</li>
+			<li>
+				<a href="#"><img src="#" alt="image"></a>
+			</li>
+			<li>
+				<a href="#"><img src="#" alt="image"></a>
+			</li>
+			<li>
+				<a href="#"><img src="#" alt="image"></a>
+			</li>
+			<li>
+				<a href="#"><img src="#" alt="image"></a>
+			</li>
+			<li>
+				<a href="#"><img src="#" alt="image"></a>
+			</li>
+		</ul>
+		<h2>Hiring Competitions</h2>
+		<ul id="event_list3" class="event grid">
+			<li>
+				<a href="#"><img src="#" alt="image"></a>
+			</li>
+			<li>
+				<a href="#"><img src="#" alt="image"></a>
+			</li>
+			<li>
+				<a href="#"><img src="#" alt="image"></a>
+			</li>
+			<li>
+				<a href="#"><img src="#" alt="image"></a>
+			</li>
+			<li>
+				<a href="#"><img src="#" alt="image"></a>
+			</li>
+			<li>
+				<a href="#"><img src="#" alt="image"></a>
+			</li>
+			<li>
+				<a href="#"><img src="#" alt="image"></a>
+			</li>
+			<li>
+				<a href="#"><img src="#" alt="image"></a>
+			</li>
+		</ul>
+	</div>
+	<script>
+		function myFunction() {
+			var input, filter, ul, li, a, i, txtValue;
+			input = document.getElementById("gsearch");
+			filter = input.value.toUpperCase();
+			ul = document.getElementById("event_list");
+			li = ul.getElementsByTagName("li");
+			ul1 = document.getElementById("event_list1");
+			li1 = ul1.getElementsByTagName("li");
+			ul2 = document.getElementById("event_list2");
+			li2 = ul2.getElementsByTagName("li");
+			ul3 = document.getElementById("event_list3");
+			li3 = ul3.getElementsByTagName("li");
+			for (i = 0; i < li.length; i++) {
+				a = li[i].getElementsByTagName("a")[0];
+				txtValue = a.textContent || a.innerText;
+				if (txtValue.toUpperCase().indexOf(filter) > -1) {
+					li[i].style.display = "";
+				} else {
+					li[i].style.display = "none";
+				}
+			}
+			for (i = 0; i < li1.length; i++) {
+				a = li1[i].getElementsByTagName("a")[0];
+				txtValue = a.textContent || a.innerText;
+				if (txtValue.toUpperCase().indexOf(filter) > -1) {
+					li1[i].style.display = "";
+				} else {
+					li1[i].style.display = "none";
+				}
+			}
+			for (i = 0; i < li2.length; i++) {
+				a = li2[i].getElementsByTagName("a")[0];
+				txtValue = a.textContent || a.innerText;
+				if (txtValue.toUpperCase().indexOf(filter) > -1) {
+					li2[i].style.display = "";
+				} else {
+					li2[i].style.display = "none";
+				}
+			}
+			for (i = 0; i < li3.length; i++) {
+				a = li3[i].getElementsByTagName("a")[0];
+				txtValue = a.textContent || a.innerText;
+				if (txtValue.toUpperCase().indexOf(filter) > -1) {
+					li3[i].style.display = "";
+				} else {
+					li3[i].style.display = "none";
+				}
+			}
+		}
+	</script>
 </body>
+
 </html>
