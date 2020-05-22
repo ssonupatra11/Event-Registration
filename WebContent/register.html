@@ -1,60 +1,198 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Register Page</title>
-<script type="text/javascript">
-function valid() 
-{
-	var u=document.getElementById('uname').value;
-	var p=document.getElementById('pass').value;
-	var q=document.getElementById('cpass').value;
-	var ph=document.getElementById('mobno').value;
-	var c=document.getElementById('ad').value;
-	if(u.length==0 || p.length==0)
-	{
-		alert("username and password souldn't be blank");
-		return false;
-	}
-	if (p.length<8) 
-	{
-		alert("password should be atleast of 8 digits");
-		return false;
-	}
-	if(ph.length!=10)
-	{
-		alert("phone number legth should be ten");
-	return false;
-	}
-	if(ad.length==0)
-	{
-	alert("you have to fill ");
-	return false;
-	}
-	if(q!=p){
-		alert("password not matched");
-		return false;
-	}
-	return true;
-}
-</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        * {
+            padding: 0%;
+            margin: 0%;
+        }
+        
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 60px;
+            font-family: cursive;
+            font-style: italic;
+        }
+        
+        body {
+            background-image: url("home.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        
+        .btn {
+            margin-top: 2%;
+            margin-left: 2%;
+            color: white;
+            background-color: transparent;
+            border: 1.5px solid rgb(55, 255, 238);
+            width: 200px;
+            height: 40px;
+            font-size: 18px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        .btn:hover {
+            width: 250px;
+            font-size: 22px;
+            border: 2.5px solid rgb(0, 255, 234);
+        }
+        
+        caption {
+            background-color: rgba(0, 0, 0, 0.692);
+            color: white;
+            font-size: 30px;
+        }
+        
+        div {
+            margin-top: 120px;
+        }
+        
+        table {
+            padding: 1%;
+            background-color: rgba(0, 0, 0, 0.692);
+            text-align: left;
+            letter-spacing: 1px;
+            font-size: 22px;
+            font-family: 'Courier New', Courier, monospace;
+            border: none;
+            color: white;
+            width: 50%;
+            height: 200px;
+        }
+        
+        a {
+            font-size: 17px;
+            color: rgb(236, 255, 153);
+        }
+        
+        input {
+            font: 20px;
+            border: none;
+            background-color: transparent;
+            color: white;
+            border-bottom: 1px solid white;
+            width: 100%;
+            height: 30px;
+        }
+        
+        @media screen and (max-width:1024px) {
+            h1 {
+                font-size: 50px;
+            }
+            table {
+                width: 70%;
+            }
+        }
+        
+        @media screen and (max-width:600px) {
+            h1 {
+                font-size: 40px;
+            }
+            div {
+                margin-top: 60px;
+            }
+            table {
+                font-size: 18px;
+                margin-left: 0%;
+                width: 100%;
+                margin-bottom: 10%;
+            }
+        }
+    </style>
+    <script type="text/javascript">
+        function valid() {
+            var u = document.getElementById('uname').value;
+            var p = document.getElementById('pass').value;
+            var q = document.getElementById('cpass').value;
+            var ph = document.getElementById('mobno').value;
+            var c = document.getElementById('ad').value;
+            if (u.length == 0 || p.length == 0) {
+                alert("username and password souldn't be blank");
+                return false;
+            }
+            if (p.length < 8) {
+                alert("password should be atleast of 8 digits");
+                return false;
+            }
+            if (ph.length != 10) {
+                alert("phone number legth should be ten");
+                return false;
+            }
+            if (ad.length == 0) {
+                alert("you have to fill ");
+                return false;
+            }
+            if (q != p) {
+                alert("password not matched");
+                return false;
+            }
+            return true;
+        }
+    </script>
+
 </head>
+
 <body>
-	<center>
-		<form action="register">
-			Enter UserName<input type="text" name="uname" id="uname"><br>
-			Enter FullName<input type="text" name="fname" id="fname"><br>
-			Enter Password<input type="password" name="pass" id="pass"><br>
-			Enter ConfirmPassword<input type="password" name="cpass"><br>
-			Enter Address<input type="text" name="ad"><br>
-			Enter MobileNumber<input type="text" name="mobno"><br>
-			Enter Gender<input type="text" name="gen"><br>
-			Enter Email<input type="email" name="email"><br>
-			Id card Number<input type="text" name="cnum"><br>
-			Registration Type<input type="text" name="rgistype"><br>
-			Number of Ticket<input type="text" name="numoftic"><br>
-			<input type="submit" value="Register">
-		</form>
-	</center>
+    <h1>EVENTS</h1>
+    <div align="center">
+        <form action="register">
+            <table>
+                <caption>USER REGISTER</caption>
+                <tr>
+                    <th>Enter UserName</th>
+                    <th><input type="text" name="uname" id="uname"></th>
+                </tr>
+                <tr>
+                    <th>Enter FullName</th>
+                    <th><input type="text" name="fname" id="fname"></th>
+                </tr>
+                <tr>
+                    <th>Enter Password</th>
+                    <th><input type="password" name="pass" id="pass"></th>
+                </tr>
+                <tr>
+                    <th>Enter ConfirmPassword</th>
+                    <th><input type="password" name="cpass"></th>
+                </tr>
+                <tr>
+                    <th>Enter Address</th>
+                    <th><input type="text" name="ad"></th>
+                </tr>
+                <tr>
+                    <th>Enter MobileNumber</th>
+                    <th><input type="text" name="mobno"></th>
+                </tr>
+                <tr>
+                    <th>Enter Gender</th>
+                    <th><input type="text" name="gen"></th>
+                </tr>
+                <tr>
+                    <th>Enter Email</th>
+                    <th><input type="email" name="email"></th>
+                </tr>
+                <tr>
+                    <th>Id card Number</th>
+                    <th><input type="text" name="cnum"></th>
+                </tr>
+                <tr>
+                    <th>Registration Type</th>
+                    <th><input type="text" name="rgistype"></th>
+                </tr>
+                <tr>
+                    <th>Number of Ticket</th>
+                    <th><input type="text" name="numoftic"></th>
+                </tr>
+                <tr>
+                    <th colspan="2" align="right"><input class="btn" type="submit" value="Register" onclick="return valid();"></th>
+                </tr>
+            </table>
+        </form>
+    </div>
 </body>
-</html>
