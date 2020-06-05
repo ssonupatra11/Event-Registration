@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <style>
+        * {
+            padding: 0%;
+            margin: 0%;
+        }
+        
+        body {
+            background-image: url("home.jpg");
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        
+        h1 {
+            margin-top: 15px;
+            font-size: 50px;
+            color: white;
+            font-family: cursive;
+            text-align: center;
+        }
+        
+        h2 {
+            color: white;
+            font-size: 40px;
+            font-family: 'Courier New', Courier, monospace;
+            margin-left: 20px;
+        }
+        
+        h6 {
+            border-radius: 7px;
+            font-family: cursive;
+            font-size: 14.5px;
+            padding: 1%;
+            margin: 20px auto;
+            height: 200px;
+            width: 90%;
+            background-color: rgba(153, 217, 233, 0.479);
+            color: rgb(2, 17, 39);
+            text-align: left;
+        }
+        
+        ul li {
+            list-style: none;
+        }
+        
+        .grid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+        }
+        
+        .event_register {
+            font-family: 'Times New Roman', Times, serif;
+            margin-top: 20px;
+            font-size: 16px;
+            width: 100%;
+            border: none;
+            border-bottom-left-radius: 7px;
+            border-bottom-right-radius: 7px;
+            background-color: rgb(119, 235, 3);
+            color: rgb(255, 255, 255);
+            height: 40px;
+        }
+        
+        .btn {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 18px;
+            height: 40px;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            width: 140px;
+            background-color: chartreuse;
+            color: white;
+        }
+        
+        .button_div {
+            display: flex;
+            justify-content: space-between;
+            padding: 1%;
+        }
+        
+        table {
+            padding: 3%;
+            margin: auto;
+            text-align: left;
+            width: 60%;
+            height: 350px;
+            border: none;
+        }
+        
+        input {
+            border: none;
+            border-bottom: 1px solid teal;
+            width: 100%;
+            height: 30px;
+        }
+        
+        caption {
+            color: #3a928b;
+            font-size: 40px;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            height: 600px;
+            width: 100%;
+        }
+        
+        .modal-content {
+            background-color: #ffffff;
+            margin: auto;
+            height: 600px;
+            width: 90%;
+        }
+        
+        .close {
+            color: #3a928b;
+            float: right;
+            font-size: 48px;
+            font-weight: bold;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: rgb(8, 44, 61);
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        @media screen and (max-width:1024px) {
+            .grid {
+                grid-template-columns: auto auto auto;
+            }
+            table {
+                width: 80%;
+            }
+        }
+        
+        @media screen and (max-width:759px) {
+            .grid {
+                grid-template-columns: auto auto;
+            }
+            h2 {
+                font-size: 30px;
+            }
+        }
+        
+        @media screen and (max-width:450px) {
+            .grid {
+                grid-template-columns: auto;
+            }
+            h2 {
+                font-size: 24px;
+            }
+            table {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="button_div"><a href="logout.jsp"><button class="btn">Logout</button></a>
+            <button id="myBtn" class="btn">Add New Events</button>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <form action="add_new_event.jsp">
+                        <table>
+                            <caption>Add New Events</caption>
+                            <tr>
+                                <th>Event Name</th>
+                                <th><input type="text" name="name1"></th>
+                            </tr>
+                            <tr>
+                                <th>Event Date</th>
+                                <th><input type="text" name="name2"></th>
+                            </tr>
+                            <tr>
+                                <th>Event Time</th>
+                                <th><input type="text" name="name3"></th>
+                            </tr>
+                            <tr>
+                                <th>Event Venue</th>
+                                <th><input type="text" name="name4"></th>
+                            </tr>
+                            <tr>
+                                <th>Event Type</th>
+                                <th><input type="text" name="name5"></th>
+                            </tr>
+                            <tr>
+                                <th>Total Seats available</th>
+                                <th><input type="text" name="name6"></th>
+                            </tr>
+                            <tr>
+                                <th>Organizer</th>
+                                <th><input type="text" name="pass7"></th>
+                            </tr>
+                            <tr>
+                                <th>Description</th>
+                                <th><input type="text" name="name8"></th>
+                            </tr>
+                            <tr>
+                                <th colspan="2" align="left"><input type="submit" value="Add" class="btn"></th>
+                            </tr>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <h1>EVENTS</h1>
+        <h2>Hackathons</h2>
+        <ul id="event_list" class="event grid">
+            <li>
+                <h6>Event Name:- <br>Event Date:- <br>Event Time:- <br>Event Venue:- <br>Event Type:- <br>Total Seats Available:- <br>Organizer:- <br><a href="show_member.jsp"><button class="event_register">Show Member</button></a></h6>
+            </li>
+            <li>
+                <h6>Event Name:- <br>Event Date:- <br>Event Time:- <br>Event Venue:- <br>Event Type:- <br>Total Seats Available:- <br>Organizer:-<br><a href="show_member.jsp"><button class="event_register">Show Member</button></a></h6>
+            </li>
+            <li>
+                <h6>Event Name:- <br>Event Date:- <br>Event Time:- <br>Event Venue:- <br>Event Type:- <br>Total Seats Available:- <br>Organizer:-<br><a href="show_member.jsp"><button class="event_register">Show Member</button></a></h6>
+            </li>
+            <li>
+                <h6>Event Name:- <br>Event Date:- <br>Event Time:- <br>Event Venue:- <br>Event Type:- <br>Total Seats Available:- <br>Organizer:-<br><a href="show_member.jsp"><button class="event_register">Show Member</button></a></h6>
+            </li>
+            <li>
+                <h6>Event Name:- <br>Event Date:- <br>Event Time:- <br>Event Venue:- <br>Event Type:- <br>Total Seats Available:-
+                    <br>Organizer:- <br><a href="show_member.jsp"><button class="event_register">Show Member</button></a></h6>
+            </li>
+            <li>
+                <h6>Event Name:- <br>Event Date:- <br>Event Time:- <br>Event Venue:- <br>Event Type:- <br>Total Seats Available:-
+                    <br>Organizer:-<br><a href="show_member.jsp"><button class="event_register">Show Member</button></a></h6>
+            </li>
+            <li>
+                <h6>Event Name:- <br>Event Date:- <br>Event Time:- <br>Event Venue:- <br>Event Type:- <br>Total Seats Available:-
+                    <br>Organizer:-<br><a href="show_member.jsp"><button class="event_register">Show Member</button></a></h6>
+            </li>
+            <li>
+                <h6>Event Name:- <br>Event Date:- <br>Event Time:- <br>Event Venue:- <br>Event Type:- <br>Total Seats Available:-
+                    <br>Organizer:-<br><a href="show_member.jsp"><button class="event_register">Show Member</button></a></h6>
+            </li>
+        </ul>
+        <h2>Coding Competitions</h2>
+        <ul id="event_list1" class="event grid">
+            <li>
+                <h6>Event Name:- <br>Event Date:- <br>Event Time:- <br>Event Venue:- <br>Event Type:- <br>Total Seats Available:-
+                    <br>Organizer:- <br><a href="show_member.jsp"><button class="event_register">Show Member</button></a></h6>
+            </li>
+            <li>
+                <h6>Event Name:- <br>Event Date:- <br>Event Time:- <br>Event Venue:- <br>Event Type:- <br>Total Seats Available:-
+                    <br>Organizer:-<br><a href="show_member.jsp"><button class="event_register">Show Member</button></a></h6>
+            </li>
+            <li>
+                <h6>Event Name:- <br>Event Date:- <br>Event Time:- <br>Event Venue:- <br>Event Type:- <br>Total Seats Available:-
+                    <br>Organizer:-<br><a href="show_member.jsp"><button class="event_register">Show Member</button></a></h6>
+            </li>
+            <li>
+                <h6>Event Name:- <br>Event Date:- <br>Event Time:- <br>Event Venue:- <br>Event Type:- <br>Total Seats Available:-
+                    <br>Organizer:-<br><a href="show_member.jsp"><button class="event_register">Show Member</button></a></h6>
+            </li>
+            <li>
+                <h6>Event Name:- <br>Event Date:- <br>Event Time:- <br>Event Venue:- <br>Event Type:- <br>Total Seats Available:-
+                    <br>Organizer:- <br><a href="show_member.jsp"><button class="event_register">Show Member</button></a></h6>
+            </li>
+            <li>
+                <h6>Event Name:- <br>Event Date:- <br>Event Time:- <br>Event Venue:- <br>Event Type:- <br>Total Seats Available:-
+                    <br>Organizer:-<br><a href="show_member.jsp"><button class="event_register">Show Member</button></a></h6>
+            </li>
+            <li>
+                <h6>Event Name:- <br>Event Date:- <br>Event Time:- <br>Event Venue:- <br>Event Type:- <br>Total Seats Available:-
+                    <br>Organizer:-<br><a href="show_member.jsp"><button class="event_register">Show Member</button></a></h6>
+            </li>
+            <li>
+                <h6>Event Name:- <br>Event Date:- <br>Event Time:- <br>Event Venue:- <br>Event Type:- <br>Total Seats Available:-
+                    <br>Organizer:-<br><a href="show_member.jsp"><button class="event_register">Show Member</button></a></h6>
+            </li>
+        </ul>
+        <h2>Webinars</h2>
+        <ul id="event_list2" class="event grid">
+            <li>
+                <h6>Event Name:- <br>Event Date:- <br>Event Time:- <br>Event Venue:- <br>Event Type:- <br>Total Seats Available:-
+                    <br>Organizer:- <br><a href="show_member.jsp"><button class="event_register">Show Member</button></a></h6>
+            </li>
+            <li>
+                <h6>Event Name:- <br>Event Date:- <br>Event Time:- <br>Event Venue:- <br>Event Type:- <br>Total Seats Available:-
+                    <br>Organizer:-<br><a href="show_member.jsp"><button class="event_register">Show Member</button></a></h6>
+            </li>
+            <li>
+                <h6>Event Name:- <br>Event Date:- <br>Event Time:- <br>Event Venue:- <br>Event Type:- <br>Total Seats Available:-
+                    <br>Organizer:-<br><a href="show_member.jsp"><button class="event_register">Show Member</button></a></h6>
+            </li>
+            <li>
+                <h6>Event Name:- <br>Event Date:- <br>Event Time:- <br>Event Venue:- <br>Event Type:- <br>Total Seats Available:-
+                    <br>Organizer:-<br><a href="show_member.jsp"><button class="event_register">Show Member</button></a></h6>
+            </li>
+            <li>
+                <h6>Event Name:- <br>Event Date:- <br>Event Time:- <br>Event Venue:- <br>Event Type:- <br>Total Seats Available:-
+                    <br>Organizer:- <br><a href="show_member.jsp"><button class="event_register">Show Member</button></a></h6>
+            </li>
+            <li>
+                <h6>Event Name:- <br>Event Date:- <br>Event Time:- <br>Event Venue:- <br>Event Type:- <br>Total Seats Available:-
+                    <br>Organizer:-<br><a href="show_member.jsp"><button class="event_register">Show Member</button></a></h6>
+            </li>
+            <li>
+                <h6>Event Name:- <br>Event Date:- <br>Event Time:- <br>Event Venue:- <br>Event Type:- <br>Total Seats Available:-
+                    <br>Organizer:-<br><a href="show_member.jsp"><button class="event_register">Show Member</button></a></h6>
+            </li>
+            <li>
+                <h6>Event Name:- <br>Event Date:- <br>Event Time:- <br>Event Venue:- <br>Event Type:- <br>Total Seats Available:-
+                    <br>Organizer:-<br><a href="show_member.jsp"><button class="event_register">Show Member</button></a></h6>
+            </li>
+        </ul>
+        <h2>Hiring Competitions</h2>
+        <ul id="event_list3" class="event grid">
+            <li>
+                <h6>Event Name:- <br>Event Date:- <br>Event Time:- <br>Event Venue:- <br>Event Type:- <br>Total Seats Available:-
+                    <br>Organizer:- <br><a href="show_member.jsp"><button class="event_register">Show Member</button></a></h6>
+            </li>
+            <li>
+                <h6>Event Name:- <br>Event Date:- <br>Event Time:- <br>Event Venue:- <br>Event Type:- <br>Total Seats Available:-
+                    <br>Organizer:-<br><a href="show_member.jsp"><button class="event_register">Show Member</button></a></h6>
+            </li>
+            <li>
+                <h6>Event Name:- <br>Event Date:- <br>Event Time:- <br>Event Venue:- <br>Event Type:- <br>Total Seats Available:-
+                    <br>Organizer:-<br><a href="show_member.jsp"><button class="event_register">Register
+                            Event</button></a></h6>
+            </li>
+            <li>
+                <h6>Event Name:- <br>Event Date:- <br>Event Time:- <br>Event Venue:- <br>Event Type:- <br>Total Seats Available:-
+                    <br>Organizer:-<br><a href="show_member.jsp"><button class="event_register">Show Member</button></a></h6>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var modal = document.getElementById("myModal");
+        var btn = document.getElementById("myBtn");
+        var span = document.getElementsByClassName("close")[0];
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+    </script>
+</body>
+
+</html>
